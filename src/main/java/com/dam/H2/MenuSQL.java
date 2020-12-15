@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import daw.com.Teclado;
 import lombok.Data;
 @Data
 public class MenuSQL {
@@ -40,9 +41,7 @@ public class MenuSQL {
 	private void seleccionarAccion() throws SQLException {
 		//mostrar opciones
 		Arrays.stream(opcs).forEach(System.out::println);
-		Scanner sc = new Scanner(System.in);
-		int opc = sc.nextInt();
-		sc.close();
+		int opc = Teclado.leerInt();
 		switch (opc) {
 		case 1:
 			//insertar departamento
@@ -68,7 +67,7 @@ public class MenuSQL {
 
 	private void selectDepart() throws SQLException {
 		//pedir dept_no
-		String dept_no = leerTeclado("dept_no");
+		String dept_no = Teclado.leerString("dept_no");
 		//preparo y ejecuto la query
 		String query = "SELECT * FROM depart WHERE dept_no = ?";
 		PreparedStatement statementSelect = this.conexion.prepareStatement(query);
@@ -84,7 +83,7 @@ public class MenuSQL {
 	}
 
 	private void insertDepart() throws SQLException {
-		String dept_no = leerTeclado("dept_no");
+		String dept_no = Teclado.leerString("dept_no");
 		String query = "SELECT * FROM depart WHERE dept_no = ?";
 		
 		PreparedStatement statementPruebaInsert = this.conexion.prepareStatement(query);
@@ -101,11 +100,5 @@ public class MenuSQL {
 		
 	}
 	
-	private String leerTeclado (String mensaje) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(mensaje);
-		String result = sc.nextLine();
-		sc.close();
-		return result;
-	}
+	
 }
