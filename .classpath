@@ -24,6 +24,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/litoral/eclipse workspace/H2/bin/h2-1.4.200.jar"/>
+	<classpathentry kind="lib" path="bin/h2-1.4.200.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
