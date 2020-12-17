@@ -17,4 +17,5 @@ public class Cliente {
 	private String nombre;
 	private LocalDate fechaNacimiento;
 	private int aval;
+	private String numCuenta;
 }
