@@ -125,4 +125,26 @@ public class ClienteDAO implements DAOInterface<Cliente, String> {
 		return clientes;
 	}
 
+	@Override
+	public int update(Cliente pk) {
+		int cuantos = 0;
+		String query = "UPDATE cliente SET nombre = ?, fecha_nac = ?, aval = ?, num_cuenta = ? WHERE dni = ?";
+		
+		try {
+			PreparedStatement pstmnt = ConexionBBDD.conectar().prepareStatement(query);
+			pstmnt.setString(1, pk.getNombre());
+			pstmnt.setDate(2, Date.valueOf(pk.getFechaNacimiento()));
+			pstmnt.setInt(3, pk.getAval());
+			pstmnt.setString(4, pk.getNumCuenta());
+			pstmnt.setString(5, pk.getDni());
+			cuantos = pstmnt.executeUpdate();
+			
+			ConexionBBDD.desconectar();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return cuantos;
+	}
+
 }
