@@ -57,7 +57,7 @@ public class Main {
 			
 			avalesClientes = cuentaOrigen.getClientes().stream().mapToInt(Cliente::getAval).sum();
 			
-			if (cantidadATransferir - cuentaOrigen.getSaldo() <= cuentaOrigen.getSaldo() - cuentaOrigen.getSaldo() - (avalesClientes / 2)) {
+			if (cantidadATransferir - cuentaOrigen.getSaldo() <= (avalesClientes / 2)) {
 				// se permite transferencia pero te quedas en numeros rojos
 				insertCuenta(cuentaOrigen, cuentaDestino, cantidadATransferir);
 				exito = true;
