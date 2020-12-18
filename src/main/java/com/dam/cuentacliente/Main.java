@@ -14,10 +14,11 @@ public class Main {
 		CuentaDAO daoCue = new CuentaDAO();
 		Cliente cli;
 		Cuenta cue;
-		
+	
 		cue = Cuenta.builder().numCuenta(Teclado.leerString("Numero de cuenta")).saldo(Teclado.leerInt("Saldo")).build();
 		if (daoCue.select(cue.getNumCuenta()).isEmpty()) {
-			daoCue.insert(cue);
+			System.out.println(cue.toString());
+			System.out.println("filas " + daoCue.insert(cue));
 			System.out.println("Cuenta insertada correctamente");
 		}
 		
@@ -40,7 +41,9 @@ public class Main {
 			System.out.println("Cuenta borrada correctamente");
 		}
 		
+		System.out.println("Leyendo cuenta origen");
 		Cuenta cuentaOrigen = leerCuenta();
+		System.out.println("Leyendo cuenta destino");
 		Cuenta cuentaDestino = leerCuenta();
 		
 		boolean exito = transferencia(cuentaOrigen, cuentaDestino);

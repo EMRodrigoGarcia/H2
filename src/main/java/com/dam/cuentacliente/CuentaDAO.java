@@ -46,7 +46,7 @@ public class CuentaDAO implements DAOInterface<Cuenta, String> {
 			ResultSet set = pstmnt.executeQuery();
 			
 			while(set.next()) {
-				cuentas.add(Cuenta.builder().numCuenta(set.getString("numero_cuenta")).saldo(set.getInt("saldo")).build());
+				cuentas.add(Cuenta.builder().numCuenta(set.getString("num_cuenta")).saldo(set.getInt("saldo")).build());
 			}
 			ConexionBBDD.desconectar();
 		} catch (SQLException e) {
@@ -59,7 +59,7 @@ public class CuentaDAO implements DAOInterface<Cuenta, String> {
 	@Override
 	public int insert(Cuenta pk) {
 		int cuantos = 0;
-		String query = "INSERT INTO cuenta (numero_cuenta, saldo) VALUES (?, ?)";
+		String query = "INSERT INTO cuenta (num_cuenta, saldo) VALUES (?, ?)";
 		
 		try {
 			PreparedStatement pstmnt = ConexionBBDD.conectar().prepareStatement(query);
@@ -71,6 +71,7 @@ public class CuentaDAO implements DAOInterface<Cuenta, String> {
 			ConexionBBDD.desconectar();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return cuantos;
 	}
