@@ -11,7 +11,7 @@ public class CuentaDAO implements DAOInterface<Cuenta, String> {
 
 	@Override
 	public Optional<Cuenta> select(String pk) {
-		Optional OpCuenta = Optional.empty();
+		Optional <Cuenta> OpCuenta = Optional.empty();
 		String query = "SELECT * FROM cuenta WHERE NUM_CUENTA = ?";
 		
 		try {
