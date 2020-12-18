@@ -5,8 +5,8 @@ import java.util.Optional;
 
 public interface DAOInterface<V, T> {
 	public Optional<V> select(T pk) throws SQLException;
-	public Iterable<V> selectAll(T pk);
-	public int insert(T pk);
-	public int delete(T pk);
+	public Iterable<V> selectAll();
+	public int insert(V pk);
+	public int delete(V pk);
 
 }
